@@ -10,7 +10,7 @@ class AddressBook < BlocRecord::Base
     @entries = []
   end
 
-  def add_entry(name, phone_number, email)
+  def add_entry(name, phone, email)
     Entry.create(name: name, phone_number: phone, email: email, address_book_id: self.id)
   end
 

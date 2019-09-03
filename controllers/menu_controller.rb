@@ -8,7 +8,6 @@ class MenuController
   end
 
   def main_menu
-    puts "Main Menu - #{address_book.entries.count} entries"
     puts "#{@address_book.name} Address Book - #{Entry.count} entries"
     puts "1 - View all entries"
     puts "2 - Create an entry"
@@ -47,7 +46,7 @@ class MenuController
   end
 
   def view_all_entries
-    Entry.all.each.do |entry|
+    Entry.all.each do |entry|
       system "clear"
       puts entry.to_s
       entry_submenu(entry)
@@ -177,4 +176,3 @@ class MenuController
     end
   end
 end
-
