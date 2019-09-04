@@ -61,15 +61,21 @@ class MenuController
     puts "New AddressBloc Entry"
     print "Name: "
     name = gets.chomp
+    validate_name(name)
+
     print "Phone number: "
     phone = gets.chomp
+    validate_phone(phone)
+
     print "Email: "
     email = gets.chomp
+    validate_email(email)
 
     address_book.add_entry(name, phone, email)
 
     system "clear"
     puts "New entry created"
+    main_menu
   end
 
   def search_entries
@@ -173,6 +179,34 @@ class MenuController
         puts "#{selection} is not a valid input"
         puts entry.to_s
         search_submenu(entry)
+    end
+  end
+
+  private
+  def validate_name(name)
+    if name =~ /^[[^0-9\W][a-zA-Z\s]]{2,20}$/
+      name
+    else
+      puts "Invalid name. Please try again."
+      create_entry
+    end
+  end
+
+  def validate_phone(phone)
+    if phone =~ /\d{3}-\d{3}-\d{4}/
+      phone
+    else 
+      puts "Invalid phone. Please try again with format xxx-xxx-xxxx"
+      create_entry
+    end
+  end
+
+  def validate_email(email)
+    if email =~ /[\d\D\w\W]{3,25}(@)[a-zA-Z]{1,10}(.)([a-z]{2,3})/
+      email
+    else 
+      puts "Invalid email. Please try again."
+      create_entry  
     end
   end
 end

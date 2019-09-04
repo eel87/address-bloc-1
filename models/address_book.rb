@@ -24,4 +24,5 @@ class AddressBook < BlocRecord::Base
     end
   end
 
+
 end
