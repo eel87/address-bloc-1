@@ -144,10 +144,16 @@ class MenuController
   def edit_entry(entry)
     print "Updated name: "
     name = gets.chomp
+    validate_name(name)
+
     print "Updated phone number: "
     phone_number = gets.chomp
+    validate_phone(phone)
+
     print "Updated email: "
     email = gets.chomp
+    validate_email(email)
+
     entry.name = name if !name.empty?
     entry.phone_number = phone_number if !phone_number.empty?
     entry.email = email if !email.empty?
@@ -188,7 +194,7 @@ class MenuController
       name
     else
       puts "Invalid name. Please try again."
-      create_entry
+      main_menu
     end
   end
 
@@ -197,7 +203,7 @@ class MenuController
       phone
     else 
       puts "Invalid phone. Please try again with format xxx-xxx-xxxx"
-      create_entry
+      main_menu
     end
   end
 
@@ -206,7 +212,7 @@ class MenuController
       email
     else 
       puts "Invalid email. Please try again."
-      create_entry  
+      main_menu  
     end
   end
 end
