@@ -66,7 +66,8 @@ class MenuController
   end
 
   def view_all_entries
-    @address_book.entries.each do |entry|
+    book = @address_book.entries.sort_by { |entry| entry.name }
+    book.entries.each do |entry|
       system "clear"
       puts entry.to_s
       entry_submenu(entry)
